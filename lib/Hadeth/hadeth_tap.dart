@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/Hadeth/item_hadeth_name.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HadethTab extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class _HadethTabState extends State<HadethTab> {
           thickness: 3,
         ),
         Text(
-          "Soura Name",
+          AppLocalizations.of(context)!.hadeth_name,
           style: Theme.of(context).textTheme.titleMedium,
         ),
         Divider(
@@ -65,7 +66,7 @@ class _HadethTabState extends State<HadethTab> {
     List<String> hadethList = ahadethContent.split('#\r\n');
     for (int i = 0; i < hadethList.length; i++) {
       //هنقطع الحديث الواحد ل عنوان ومحتوي
-      List<String> hadethLines = hadethList[0].split('\n');
+      List<String> hadethLines = hadethList[i].split('\n');
       String title = hadethLines[0];
       hadethLines.removeAt(0);
       Hadeth hadeth = Hadeth(title: title, content: hadethLines);
