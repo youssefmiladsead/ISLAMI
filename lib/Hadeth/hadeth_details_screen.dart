@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami/Hadeth/item_hadeth_details.dart';
+import 'package:provider/provider.dart';
 
+import '../provider/provider.dart';
 import 'hadeth_tap.dart';
 
 class HadethDetailsScreen extends StatefulWidget {
@@ -13,11 +15,18 @@ class HadethDetailsScreen extends StatefulWidget {
 class _HadethDetailsScreenState extends State<HadethDetailsScreen> {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppProvider>(context);
+
     var args = ModalRoute.of(context)?.settings.arguments as Hadeth;
 
     return Stack(children: [
-      Image.asset('assets/image/background.png',
-          width: double.infinity, height: double.infinity, fit: BoxFit.fill),
+      provider.appTheme == ThemeMode.dark
+          ? Image.asset('assets/image/BackGround_Dark.png',
+              width: double.infinity, height: double.infinity, fit: BoxFit.fill)
+          : Image.asset('assets/image/background.png',
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill),
       Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
